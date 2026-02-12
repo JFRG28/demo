@@ -1,5 +1,6 @@
 package microserv.springboot.srqhex.demo.application.services;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import microserv.springboot.srqhex.demo.application.ports.UserRepository;
 import microserv.springboot.srqhex.demo.application.usecases.users.CreateUser;
@@ -26,6 +27,12 @@ public class UserService implements GetUser, CreateUser {
     public User createUser(User user) {
         // Mock implementation for demonstration purposes
         return userRepository.createUser(user); // Simulate creating a user and returning it
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        // Mock implementation for demonstration purposes
+        return userRepository.getAllUsers(); // Simulate retrieving all users
     }
 
 }

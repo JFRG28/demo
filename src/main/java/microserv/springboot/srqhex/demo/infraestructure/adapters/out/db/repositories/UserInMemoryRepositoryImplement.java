@@ -1,6 +1,7 @@
 package microserv.springboot.srqhex.demo.infraestructure.adapters.out.db.repositories;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Repository;
 import microserv.springboot.srqhex.demo.application.ports.UserRepository;
@@ -34,6 +35,12 @@ public class UserInMemoryRepositoryImplement implements UserRepository {
         userStore.put(id, user);
         return user;
         
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        // Mock implementation for demonstration purposes
+        return userStore.values().stream().toList();
     }
 
 }

@@ -1,13 +1,13 @@
 package microserv.springboot.srqhex.demo.infraestructure.adapters.in.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
-
 import microserv.springboot.srqhex.demo.application.usecases.users.CreateUser;
 import microserv.springboot.srqhex.demo.application.usecases.users.GetUser;
 import microserv.springboot.srqhex.demo.domain.pojos.User;
 import microserv.springboot.srqhex.demo.infraestructure.adapters.in.controllers.dto.UserDto;
 import microserv.springboot.srqhex.demo.infraestructure.adapters.in.controllers.mapper.UserMapper;
-
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,6 +49,19 @@ public class UserController {
         User createdUser = createUser.createUser(user);
         return ResponseEntity.ok(UserMapper.toUserDto(createdUser));
     }
+
+    @GetMapping("/v1/users/all")
+    public ResponseEntity<List<UserDto>> getAllUsers() {
+        // This is a placeholder for the actual implementation to get all users
+        // You would typically call a use case to retrieve all users and return them as a list of UserDto
+        List<User> users = getUser.getAllUsers();
+        List<UserDto> userDtos = users.stream()
+                                  .map(UserMapper::toUserDto)
+                                  .collect(Collectors.toList());
+        return ResponseEntity.ok(userDtos);
+        
+    }
+    
     
 
 }
