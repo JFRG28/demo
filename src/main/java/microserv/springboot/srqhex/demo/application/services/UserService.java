@@ -1,14 +1,13 @@
 package microserv.springboot.srqhex.demo.application.services;
 
 import java.util.List;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import microserv.springboot.srqhex.demo.application.ports.UserRepository;
 import microserv.springboot.srqhex.demo.application.usecases.users.CreateUser;
 import microserv.springboot.srqhex.demo.application.usecases.users.GetUser;
 import microserv.springboot.srqhex.demo.domain.pojos.User;
 
-
-@Service
+@Component
 public class UserService implements GetUser, CreateUser {
 
     private final UserRepository userRepository;
@@ -34,5 +33,4 @@ public class UserService implements GetUser, CreateUser {
         // Mock implementation for demonstration purposes
         return userRepository.getAllUsers(); // Simulate retrieving all users
     }
-
 }
